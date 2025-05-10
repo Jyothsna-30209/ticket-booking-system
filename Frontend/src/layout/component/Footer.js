@@ -29,7 +29,7 @@ function Footer(){
                         <div className="card-deck py-4 mx-4 px-2 ">
                             <div className="card">
                                 <img className="card-img"
-                                src='https://r3w5i9w3.rocketcdn.me/wp-content/uploads/2021/02/goa-1024x683.jpg' height='150px'
+                                src='https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/10/18/16/goa-overview.jpg' height='150px'
                                 />
                                 <div className="card-body">
                                     <div className="card-text">Combat the monotony of life at the beautiful beaches of Goa.</div>
@@ -56,7 +56,7 @@ function Footer(){
 
                             <div className="card">
                                 <img className="card-img"
-                                src="https://www.tajhotels.com/content/dam/luxury/rambagh-palace/3x2/67917782-H1-TRPJ_Suvarna_Mahal_Indian_Fine_Dining_5539-3x2.jpg/jcr:content/renditions/cq5dam.web.756.756.jpeg" height='150px'
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTimr1a7OZ5y2KQFEps5-Jelkt7VlAfdr4pKg&s" height='150px'
                                 />
                                 <div className="card-body">
                                     <div className="card-text">Enjoy a luxurious stay in the opulent royal palaces of Rajasthan.</div>
@@ -84,7 +84,7 @@ function Footer(){
                         </div>
 
                         <div className="form-inline footer-copyright" style={footerStyle1}>
-                            <h6 className="mx-4 my-0 pt-2 pb-0 px-3">© Copyright 2022 <i class="fas fa-paper-plane mr-1"></i>BookMyTrip</h6>
+                            <h6 className="mx-4 my-0 pt-2 pb-0 px-3">© Copyright 2025 <i class="fas fa-paper-plane mr-1"></i>BookMyTrip</h6>
                             <ul className="my-0 mx-4 pt-2 pb-0 col-md-6 col-lg-7 list-unstyled list-inline text-center text-md-right" style={iconStyle1}>
                                 <li className="list-inline-item">
                                     <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>

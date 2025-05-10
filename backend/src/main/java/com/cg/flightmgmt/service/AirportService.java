@@ -14,4 +14,6 @@ public interface AirportService {
 
     // view an airport using its airport code
     public Airport viewAirport(int airportCode) throws AirportNotFoundException;
+    public void deleteAirport(int airportCode); 
+    
 }

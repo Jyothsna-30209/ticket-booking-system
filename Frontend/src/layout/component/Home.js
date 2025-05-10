@@ -28,6 +28,7 @@ import DeleteBooking from '../../booking/component/DeleteBooking';
 import ViewBookingId from '../../booking/component/ViewBookingId';
 import UpdatePassengers from '../../passenger/component/UpdatePassengers';
 import PayNow from '../../booking/component/PayNow';
+import DeleteAirport from '../../airport/component/DeleteAirports';
 
 
 function Home(){
@@ -45,6 +46,7 @@ function Home(){
 
                     <Route path="/airports" element={<ViewAirports />}/>
                     <Route path="/airports/add" element={<AddAirports />}/>
+                    <Route path="/airports/delete" element={<DeleteAirport />}/>
 
                     <Route path="/flights" element={<ViewFlights />}/>
                     <Route path="/flights/add" element={<AddFlights />}/>
