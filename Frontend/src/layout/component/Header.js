@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Header() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
     const iconStyle = {
         color: 'white',
         fontSize: '20px',
@@ -13,10 +19,12 @@ function Header() {
     };
 
     const navStyle = {
-        backgroundColor: '#3E8E41', // Green background for a fresh and professional look
-        padding: '15px 20px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15)', // Enhanced shadow for depth
+        backgroundColor: '#3E8E41',
+        padding: '10px 20px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15)',
         width: '100%',
+        position: 'relative',
+        zIndex: 999,
     };
 
     const logoStyle = {
@@ -26,6 +34,7 @@ function Header() {
         marginLeft: '10px',
         fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
         letterSpacing: '2px',
+        textDecoration: 'none',
     };
 
     const linkStyle = {
@@ -33,86 +42,166 @@ function Header() {
         padding: '10px 20px',
         textDecoration: 'none',
         fontSize: '18px',
-        borderRadius: '30px', // Rounded corners for the links
+        borderRadius: '30px',
         margin: '5px',
-        transition: 'background-color 0.3s ease, transform 0.3s ease',
-    };
-
-    const linkHoverStyle = {
-        backgroundColor: '#6BBF73', // Lighter green shade on hover
-        transform: 'scale(1.05)', // Slightly enlarges on hover
+        display: 'inline-block',
+        whiteSpace: 'nowrap',
     };
 
     const buttonStyle = {
-        backgroundColor: '#FF5722', // Vibrant color for action buttons
+        backgroundColor: '#FF5722',
         border: 'none',
         padding: '10px 15px',
         color: '#fff',
         borderRadius: '5px',
         fontSize: '16px',
         margin: '0 10px',
-        transition: 'background-color 0.3s ease, transform 0.3s ease',
-    };
-
-    const buttonHoverStyle = {
-        backgroundColor: '#FF784E',
-        transform: 'scale(1.05)', // Enlarges button slightly on hover
     };
 
     return (
-        <nav style={navStyle} className="navbar navbar-expand-lg">
-            <i className="fas fa-paper-plane mr-1" style={iconStyle}></i>
-            <Link className="navbar-brand" to={{ pathname: "/" }} style={logoStyle}>MyTrip</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
+        <>
+            <style>{`
+                .navbar {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                }
 
-            <button style={buttonStyle}>
-                <a href="https://sdp3-flight-management.netlify.app/" style={linkStyle}>Home</a>
-            </button>
+                .nav-left {
+                    display: flex;
+                    align-items: center;
+                }
 
-            <div className="collapse navbar-collapse ml-1" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">
-                    {sessionStorage.getItem('userType') === 'Customer' ? (
-                        <div className='form-inline'>
-                            <li className="nav-item">
-                                <Link className='nav-link' to={{ pathname: "/booking/view" }} style={linkStyle}>
-                                    Your bookings
+                .menu-toggle {
+                    display: none;
+                    font-size: 26px;
+                    color: white;
+                    background: none;
+                    border: none;
+                }
+                .nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav-links ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+                .nav-links a, .nav-links li {
+                    display: inline-block;
+                }
+
+                @media (max-width: 768px) {
+                    .menu-toggle {
+                        display: block;
+                    }
+
+                    .nav-links {
+                        display: ${isOpen ? 'flex' : 'none'};
+                        flex-direction: column;
+                        width: 100%;
+                        margin-top: 10px;
+                        background-color: #3E8E41;
+                        padding: 10px 0;
+                        border-radius: 10px;
+                    }
+
+                    .nav-links a, .nav-links li {
+                        width: 100%;
+                        text-align: center;
+                        padding: 10px 0;
+                        font-size: 16px;
+                    }
+
+                    .custom-home-button {
+                        width: 100%;
+                        text-align: center;
+                        margin-top: 10px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .navbar-brand {
+                        font-size: 20px !important;
+                    }
+
+                    .nav-links a {
+                        font-size: 14px;
+                        padding: 8px 0;
+                    }
+
+                    .custom-home-button a {
+                        font-size: 14px;
+                    }
+                }
+            `}</style>
+
+            <nav style={navStyle} className="navbar">
+                <div className="nav-left">
+                    <i className="fas fa-paper-plane mr-1" style={iconStyle}></i>
+                    <Link className="navbar-brand" to="/" style={logoStyle}>MyTrip</Link>
+                </div>
+
+                <button className="menu-toggle" onClick={toggleMenu}>
+                    <i className="fas fa-bars"></i>
+                </button>
+
+                <div className="custom-home-button">
+                    <button style={buttonStyle}>
+                        <a href="https://sdp3-flight-management.netlify.app/" style={{ ...linkStyle, padding: 0 }}>Home</a>
+                    </button>
+                </div>
+
+                <div className="nav-links">
+                    <ul className="navbar-nav">
+                        {sessionStorage.getItem('userType') === 'Customer' && (
+                            <>
+                                <li>
+                                    <Link to="/booking/view" style={linkStyle}>Your bookings</Link>
+                                </li>
+                                <li>
+                                    <Link to="/scheduleFlight" style={linkStyle}>All flights</Link>
+                                </li>
+                            </>
+                        )}
+                        {sessionStorage.getItem('userType') === 'Admin' && (
+                            <li>
+                                <Link to="/links" style={linkStyle}>
+                                    <i className="fas fa-user-cog" style={iconStyle2}></i> Admin Tools
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className='nav-link' to={{ pathname: "/scheduleFlight" }} style={linkStyle}>
-                                    All flights
-                                </Link>
-                            </li>
-                        </div>
-                    ) : null}
-                    {sessionStorage.getItem('userType') === 'Admin' ? (
-                        <li className="nav-item">
-                            <Link className='nav-link' to={{ pathname: "/links" }} style={linkStyle}>
-                                <i className="fas fa-user-cog" style={iconStyle2}></i> Admin Tools
+                        )}
+                        <li>
+                            <Link to="/scheduleFlight/search" style={linkStyle}>
+                                <i className="fas fa-plane-departure mr-1" style={iconStyle2}></i> Search Flights
                             </Link>
                         </li>
-                    ) : null}
-                </ul>
-                <div className='navbar-nav'>
-                    <span className='form-inline'>
-                        <Link className='nav-link' to={{ pathname: "/scheduleFlight/search" }} style={linkStyle}>
-                            <i className="fas fa-plane-departure mr-1" style={iconStyle2}></i> Search Flights
-                        </Link>
                         {sessionStorage.getItem('userId') !== null ? (
-                            <Link className='nav-link' to={{ pathname: "/logout" }} style={linkStyle}>
-                                <i className="fas fa-sign-out-alt" style={iconStyle2}></i> Logout
-                            </Link>
+                            <li>
+                                <Link to="/logout" style={linkStyle}>
+                                    <i className="fas fa-sign-out-alt" style={iconStyle2}></i> Logout
+                                </Link>
+                            </li>
                         ) : (
-                            <Link className='nav-link' to={{ pathname: "/login" }} style={linkStyle}>
-                                <i className="fas fa-sign-in-alt" style={iconStyle2}></i> Login
-                            </Link>
+                            <li>
+                                <Link to="/login" style={linkStyle}>
+                                    <i className="fas fa-sign-in-alt" style={iconStyle2}></i> Login
+                                </Link>
+                            </li>
                         )}
-                    </span>
+                    </ul>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </>
     );
 }
 

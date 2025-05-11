@@ -29,50 +29,53 @@ import ViewBookingId from '../../booking/component/ViewBookingId';
 import UpdatePassengers from '../../passenger/component/UpdatePassengers';
 import PayNow from '../../booking/component/PayNow';
 import DeleteAirport from '../../airport/component/DeleteAirports';
+import DeleteScheduledFlights from '../../scheduledflight/component/DeleteScheduledFlights';
 
 
-function Home(){
-    return(
+function Home() {
+    return (
         <div className='container'>
             <Router>
                 <Header />
                 <Routes>
-                    <Route path="/" element={<Page/>}/>
-                    <Route path="/links" element={<Links/>}/>
+                    <Route path="/" element={<Page />} />
+                    <Route path="/links" element={<Links />} />
 
-                    <Route path="/login" element={<Login />}/>
-                    <Route path="/logout" element={<Logout/>} />
-                    <Route path="/redirect" element={<Redirect/>} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/logout" element={<Logout />} />
+                    <Route path="/redirect" element={<Redirect />} />
 
-                    <Route path="/airports" element={<ViewAirports />}/>
-                    <Route path="/airports/add" element={<AddAirports />}/>
-                    <Route path="/airports/delete" element={<DeleteAirport />}/>
+                    <Route path="/airports" element={<ViewAirports />} />
+                    <Route path="/airports/add" element={<AddAirports />} />
+                    <Route path="/airports/delete" element={<DeleteAirport />} />
 
-                    <Route path="/flights" element={<ViewFlights />}/>
-                    <Route path="/flights/add" element={<AddFlights />}/>
-                    <Route path="/flights/update/:flightNumber" element={<UpdateFlights />}/>
-                    <Route path="/flights/delete/:flightNumber" element={<DeleteFlights />}/>
+                    <Route path="/flights" element={<ViewFlights />} />
+                    <Route path="/flights/add" element={<AddFlights />} />
+                    <Route path="/flights/delete" element={<DeleteFlights />} />
+                    <Route path="/flights/update/:flightNumber" element={<UpdateFlights />} />
+                    <Route path="/flights/delete/:flightNumber" element={<DeleteFlights />} />
 
-                    <Route path="/schedule/add" element={<AddSchedule />}/>
+                    <Route path="/schedule/add" element={<AddSchedule />} />
 
-                    <Route path="/scheduleFlight" element={<ViewScheduledFlights />}/>
-                    <Route path="/scheduleFlight/admin" element={<ViewScheduledFlightsAdminView />}/>
-                    <Route path="/scheduleFlight/search" element={<ViewScheduledFlightsAirports />}/>
-                    <Route path="/scheduleFlight/add" element={<AddScheduledFlight />}/>
-                    <Route path="/scheduleFlight/admin/update/:flightNumber" element={<UpdateScheduledFlights />}/>
-                    <Route path="/scheduleFlight/admin/delete/:flightNumber" element={<DeleteScheduleFlights />}/>
+                    <Route path="/scheduleFlight" element={<ViewScheduledFlights />} />
+                    <Route path="/scheduleFlight/admin" element={<ViewScheduledFlightsAdminView />} />
+                    <Route path="/scheduleFlight/search" element={<ViewScheduledFlightsAirports />} />
+                    <Route path="/scheduleFlight/add" element={<AddScheduledFlight />} />
+                    <Route path="/scheduleFlight/delete" element={<DeleteScheduledFlights />} />
+                    <Route path="/scheduleFlight/admin/update/:flightNumber" element={<UpdateScheduledFlights />} />
+                    <Route path="/scheduleFlight/admin/delete/:flightNumber" element={<DeleteScheduleFlights />} />
 
-                    <Route path="/users" element={<ViewUsers />}/>
-                    <Route path="/users/add/" element={<AddUsers />}/>
-                    <Route path="/users/update/:id" element={<UpdateUsers />}/>
-                    <Route path="/users/delete/:id" element={<DeleteUsers />}/>
+                    <Route path="/users" element={<ViewUsers />} />
+                    <Route path="/users/add/" element={<AddUsers />} />
+                    <Route path="/users/update/:id" element={<UpdateUsers />} />
+                    <Route path="/users/delete/:id" element={<DeleteUsers />} />
 
-                    <Route path="/booking/:scheduleFlightId" element={<AddBooking />}/>
-                    <Route path="/booking/view" element={<ViewBookings />}/>
-                    <Route path="/booking/view/:bookingId" element={<ViewBookingId />}/>
-                    <Route path="/booking/update/:bookingId" element={<UpdatePassengers/>}/>
-                    <Route path="/booking/delete/:bookingId" element={<DeleteBooking/>}/>
-                    <Route path="/booking/paynow/:bookingId" element={<PayNow/>}/>
+                    <Route path="/booking/:scheduleFlightId" element={<AddBooking />} />
+                    <Route path="/booking/view" element={<ViewBookings />} />
+                    <Route path="/booking/view/:bookingId" element={<ViewBookingId />} />
+                    <Route path="/booking/update/:bookingId" element={<UpdatePassengers />} />
+                    <Route path="/booking/delete/:bookingId" element={<DeleteBooking />} />
+                    <Route path="/booking/paynow/:bookingId" element={<PayNow />} />
                 </Routes>
             </Router>
         </div>

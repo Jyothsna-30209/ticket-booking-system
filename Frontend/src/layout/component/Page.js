@@ -2,6 +2,49 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
+const cities = [
+    {
+        airport: "Indira Gandhi International Airport",
+        location: "Delhi, India",
+        iframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29877884.435150057!2d59.44429219999999!3d23.917875680195365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1b85fc2a2d89%3A0xbef376182c43ed9d!2sIndira%20Gandhi%20International%20Airport!5e0!3m2!1sen!2sin!4v1746918971642!5m2!1sen!2sin"
+    },
+    {
+        airport: "Chhatrapati Shivaji Maharaj International Airport",
+        location: "Mumbai, India",
+        iframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29877884.435150057!2d59.44429219999999!3d23.917875680195365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c85099bd2947%3A0x1ecc1a60c474a8ae!2sChhatrapati%20Shivaji%20Maharaj%20International%20Airport%20Mumbai!5e0!3m2!1sen!2sin!4v1746919016393!5m2!1sen!2sin"
+    },
+    {
+        airport: "Rajiv Gandhi International Airport",
+        location: "Hyderabad, India",
+        iframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29877884.435150057!2d59.44429219999999!3d23.917875680195365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbbb7fb1d91b45%3A0x532029ec33eaa851!2sRajiv%20Gandhi%20International%20Airport!5e0!3m2!1sen!2sin!4v1746919092700!5m2!1sen!2sin"
+    },
+    {
+        airport: "Kempegowda International Airport Bengaluru",
+        location: "Bangalore, India",
+        iframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29877884.435150057!2d59.44429219999999!3d23.917875680195365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1cfe75446265%3A0x296c70e9a129418e!2sKempegowda%20International%20Airport%20Bengaluru!5e0!3m2!1sen!2sin!4v1746919157045!5m2!1sen!2sin"
+    },
+    {
+        airport: "Haneda Airport",
+        location: "Tokyo, Japan",
+        iframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12984.971910234195!2d139.7684885017618!3d35.54770092084111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018640ba43192e3%3A0xd32c3a9d146f8df!2sHaneda%20Airport!5e0!3m2!1sen!2sin!4v1746919282703!5m2!1sen!2sin"
+    },
+    {
+        airport: "Netaji Subhash Chandra Bose International Airport",
+        location: "Kolkata, India",
+        iframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29877884.435150057!2d59.44429219999999!3d23.917875680195365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89faa59df6903%3A0xdb1444043648b83!2sNetaji%20Subhash%20Chandra%20Bose%20International%20Airport!5e0!3m2!1sen!2sin!4v1746919204225!5m2!1sen!2sin"
+    },
+    {
+        airport: "Dubai International Airport",
+        location: "Dubai, UAE",
+        iframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28867.25761728987!2d55.3387445961764!3d25.256883884358803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5d0693260e69%3A0xe695d4007a48eee9!2sDubai%20International%20Airport!5e0!3m2!1sen!2sin!4v1746919240474!5m2!1sen!2sin"
+    },
+    {
+        airport: "Sydney Kingsford Smith Airport",
+        location: "Sydney, Australia",
+        iframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.2794180229125!2d151.17721607544092!3d-33.93394082243526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12b0e4bf23fadd%3A0x5237240ed6e66b85!2sSydney%20Airport%20DOM%20T2%20Drop-Off!5e0!3m2!1sen!2sin!4v1746919318745!5m2!1sen!2sin" 
+    }
+];
+
 function Page() {
     return (
         <div>
@@ -54,25 +97,34 @@ function Page() {
 
             {/* Map Section */}
             <div className="container my-5">
-                <h3 className="text-center mb-3">
-                    <i className="fas fa-map-marked-alt"></i> &nbsp;Flight Routes Overview
+                <h3 className="text-center mb-4">
+                    <i className="fas fa-plane-departure"></i> &nbsp;Global Airport Views
                 </h3>
-                <div className="row justify-content-center">
-                    <div className="col-md-10">
-                        <div style={{ border: "2px solid #ccc", borderRadius: "10px", overflow: "hidden" }}>
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15249885.318783779!2d82.75252935!3d21.0680074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1746897362533!5m2!1sen!2sin"
-                                width="100%"
-                                height="500"
-                                style={{ border: "0" }}
-                                allowFullScreen=""
-                                loading="lazy"
-                                title="Flight Route Map"
-                            ></iframe>
+                <div className="row">
+                    {cities.map((city, index) => (
+                        <div className="col-md-6 col-lg-3 mb-4" key={index}>
+                            <div className="card h-100 shadow-sm">
+                                <div className="ratio ratio-4x3">
+                                    <iframe
+                                        src={city.iframe}
+                                        width="100%"
+                                        height="100%"
+                                        style={{ border: 0 }}
+                                        allowFullScreen=""
+                                        loading="lazy"
+                                        title={`Map of ${city.airport}`}
+                                    ></iframe>
+                                </div>
+                                <div className="card-body text-center">
+                                    <h6 className="card-title mb-1">{city.airport}</h6>
+                                    <p className="text-muted mb-0">{city.location}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
+
 
             <Footer />
         </div>

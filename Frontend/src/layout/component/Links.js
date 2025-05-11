@@ -33,7 +33,7 @@ function Links() {
         { to: "/flights/add", icon: "fas fa-plane", title: "Add planes", desc: "Add planes to the database." },
         { to: "/flights/delete", icon: "fas fa-plane", title: "Delete planes", desc: "Delete planes from the database." },
         { to: "/schedule/add", icon: "fas fa-calendar", title: "Add schedule", desc: "Add a new flight schedule." },
-        { to: "/schedule/delete", icon: "fas fa-calendar", title: "Delete schedule", desc: "Delete a flight schedule." },
+        { to: "/scheduleFlight/delete", icon: "fas fa-calendar", title: "Delete schedule", desc: "Delete a flight schedule." },
         { to: "/scheduleFlight/admin", icon: "fas fa-tasks", title: "View schedule", desc: "Manage full flight schedules." },
         { to: "/users", icon: "fas fa-users", title: "View users", desc: "View and manage user accounts." },
         { to: "/add-admin", icon: "fas fa-user-shield", title: "Add admin", desc: "Grant admin rights to a user." },
